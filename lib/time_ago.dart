@@ -1,11 +1,15 @@
-import 'package:super_time/enums.dart';
-
+/// Represents a time interval relative to the current time.
 class TimeAgo {
-  int value;
-  TimeAgoType type;
+  /// The value of the time interval.
+  final int value;
 
+  /// The type of time interval.
+  final TimeAgoType type;
+
+  /// Constructs a [TimeAgo] object with the given [value] and [type].
   TimeAgo({required this.value, required this.type});
 
+  /// Returns a string representing the time interval in French.
   String get fr {
     switch (type) {
       case TimeAgoType.justNow:
@@ -23,6 +27,7 @@ class TimeAgo {
     }
   }
 
+  /// Returns a string representing the time interval in English.
   String get en {
     switch (type) {
       case TimeAgoType.justNow:
@@ -40,6 +45,7 @@ class TimeAgo {
     }
   }
 
+  /// Returns a string representing the time interval in Spanish.
   String get es {
     switch (type) {
       case TimeAgoType.justNow:
@@ -57,6 +63,7 @@ class TimeAgo {
     }
   }
 
+  /// Returns a string representing the time interval in Portuguese.
   String get pt {
     switch (type) {
       case TimeAgoType.justNow:
@@ -73,4 +80,25 @@ class TimeAgo {
         return 'há ${value.toString().padLeft(2, "0")} semanas';
     }
   }
+}
+
+/// Enum representing the type of time interval.
+enum TimeAgoType {
+  /// Represents a time interval that is very recent.
+  justNow,
+
+  /// Represents a time interval in seconds.
+  seconds,
+
+  /// Represents a time interval in minutes.
+  minutes,
+
+  /// Represents a time interval in hours.
+  hours,
+
+  /// Represents a time interval in days.
+  days,
+
+  /// Represents a time interval in weeks.
+  weeks,
 }

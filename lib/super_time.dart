@@ -1,8 +1,8 @@
 library super_time;
 
-import 'package:super_time/classes.dart';
-import 'package:super_time/enums.dart';
+import 'package:super_time/time_ago.dart';
 
+/// A utility class for common time-related operations.
 class SuperTime {
   static const int _second = 1000;
   static const int _minute = 60 * _second;
@@ -10,6 +10,7 @@ class SuperTime {
   static const int _day = 24 * _hour;
   static const int _week = 7 * _day;
 
+  /// Returns a [TimeAgo] object representing the time elapsed since the given [date].
   static TimeAgo timeAgo(DateTime date) {
     final int diff =
         DateTime.now().millisecondsSinceEpoch - date.millisecondsSinceEpoch;
@@ -38,10 +39,17 @@ class SuperTime {
     return TimeAgo(value: value, type: type);
   }
 
+  /// Converts a [DateTime] object [dateTime] to a timestamp string.
+  static String toTimestamp(DateTime dateTime) {
+    return dateTime.millisecondsSinceEpoch.toString();
+  }
+
+  /// Converts a timestamp integer [timestamp] to a [DateTime] object.
   static DateTime fromTimestamp(int timestamp) {
     return DateTime.fromMillisecondsSinceEpoch(timestamp);
   }
 
+  /// Formats the given [date] according to the specified [format].
   static String toFormat(String format, DateTime date) {
     return format
         .replaceAll('yyyy', date.year.toString())
@@ -53,6 +61,7 @@ class SuperTime {
         .replaceAll('ss', date.second.toString().padLeft(2, '0'));
   }
 
+  /// Formats the given [datetime] in French.
   static String toFr(DateTime datetime,
       {bool withTime = false, bool withDay = true}) {
     final months = [
@@ -101,6 +110,7 @@ class SuperTime {
     return '$date $month ${datetime.year}';
   }
 
+  /// Formats the given [datetime] in English.
   static String toEn(DateTime datetime,
       {bool withTime = false, bool withDay = true}) {
     final months = [
@@ -149,6 +159,7 @@ class SuperTime {
     return '$month $date ${datetime.year}';
   }
 
+  /// Converts a [DateTime] object [dateTime] to a JSON representation.
   static Map<String, int> toJson(DateTime dateTime) => {
         'year': dateTime.year,
         'month': dateTime.month,
@@ -160,6 +171,7 @@ class SuperTime {
         'microsecond': dateTime.microsecond,
       };
 
+  /// Converts a JSON representation [json] to a [DateTime] object.
   static DateTime fromJson(Map<String, dynamic> json) => DateTime(
         json['year'],
         json['month'],
@@ -171,12 +183,15 @@ class SuperTime {
         json['microsecond'],
       );
 
-  static String toTimestamp(DateTime dateTime) {
-    return dateTime.millisecondsSinceEpoch.toString();
-  }
-
+  /// Converts a number of [days] to a [Duration] object.
   static Duration toDays(int days) => Duration(days: days);
+
+  /// Converts a number of [hours] to a [Duration] object.
   static Duration toHours(int hours) => Duration(hours: hours);
+
+  /// Converts a number of [minutes] to a [Duration] object.
   static Duration toMinutes(int minutes) => Duration(minutes: minutes);
+
+  /// Converts a number of [seconds] to a [Duration] object.
   static Duration toSeconds(int seconds) => Duration(seconds: seconds);
 }
