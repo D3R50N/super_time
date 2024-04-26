@@ -1,6 +1,5 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:super_time/time_ago.dart';
 import 'package:super_time/super_time.dart';
 
 /// Extension methods for [DateTime] objects.
