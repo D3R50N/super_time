@@ -5,3 +5,7 @@
 ## 0.0.2
 
 - updated docs comments
+
+## 0.0.2+1
+
+- Added example

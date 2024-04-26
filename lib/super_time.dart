@@ -2,6 +2,9 @@ library super_time;
 
 import 'package:super_time/time_ago.dart';
 
+export 'package:super_time/time_ago.dart';
+export 'package:super_time/extensions.dart';
+
 /// A utility class for common time-related operations.
 class SuperTime {
   static const int _second = 1000;
